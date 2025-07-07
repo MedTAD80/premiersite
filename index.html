@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Apps Script</title>
+</head>
+<body>
+  <h1>Réponse depuis Google Apps Script :</h1>
+  <pre id="resultat">Chargement...</pre>
+
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbyEMcudu7FgfqQXunAxFpJ6Kg-jy4ui1EROXnkPpStVju8gm6gXZtpUwJasF0kDidyw/exec")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("resultat").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById("resultat").textContent = "Erreur : " + error;
+      });
+  </script>
+</body>
+</html>
